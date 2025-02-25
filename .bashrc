@@ -12,16 +12,11 @@ esac
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
 
-# append to the history file, don't overwrite it
-shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
 
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
@@ -101,35 +96,26 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
-. "$HOME/.cargo/env"
-
 alias att="sudo apt update && sudo apt upgrade"
 alias shutdown="sudo shutdown -h now"
 alias reboot="sudo reboot"
+alias reload="source ~/.bashrc"
+
 
 alias ..="cd .."
 alias ...="cd ..//.."
 
 alias c="clear"
 
-# Exibe usuário, host e diretório atual com cores.
-PS1='\[\e[1;32m\]\u@\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[0m\]\$ '
+alias tempo="curl https://wttr.in/Maringá"
 
 # Autocompletar com Tab
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
-# Ativa correção de comandos
-shopt -s cdspell  # Corrige erros simples ao usar 'cd'
-shopt -s dirspell  # Corrige nomes de diretórios
+# ----------------------------
+# Configurações de Cor
+# ----------------------------
+
+echo -e "Configurações do Bash carregadas! Pronto para usar.\e[0m"
